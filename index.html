@@ -140,6 +140,18 @@
         .photo-shape-torn-left { clip-path: polygon(6% 0%, 100% 0%, 100% 100%, 4% 100%, 9% 94%, 3% 88%, 8% 82%, 4% 76%, 9% 70%, 3% 64%, 8% 58%, 3% 52%, 9% 46%, 4% 40%, 8% 34%, 3% 28%, 9% 22%, 4% 16%, 8% 10%, 3% 5%); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @media (max-width: 767px) {
+            #floating-toolbar > div { flex-wrap: wrap; justify-content: center; max-width: 100%; }
+            #floating-toolbar #image-controls,
+            #floating-toolbar #text-controls {
+                width: 100%;
+                justify-content: center;
+                padding-right: 0;
+                padding-bottom: 0.25rem;
+                border-right: 0;
+                border-bottom: 1px solid rgba(161, 161, 170, 0.35);
+            }
+        }
     </style>
 </head>
 <body class="bg-zinc-100 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 h-[100dvh] flex flex-col overflow-hidden transition-colors duration-200">
@@ -157,9 +169,9 @@
     </svg>
 
     <!-- TOP NAVIGATION BAR -->
-    <header class="h-14 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 sm:px-5 flex items-center justify-between shrink-0 z-30">
+    <header class="h-auto md:h-14 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-2 sm:px-5 py-2 md:py-0 flex flex-wrap md:flex-nowrap items-center justify-between gap-y-2 shrink-0 z-30">
         <!-- Brand Logo -->
-        <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-2.5 shrink-0">
             <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-violet-600 to-fuchsia-500 flex items-center justify-center text-white font-display font-bold text-lg shadow-md">
                 S
             </div>
@@ -170,7 +182,7 @@
         </div>
 
         <!-- Center Controls: Slide Count & Canvas Zoom -->
-        <div class="flex items-center gap-2 sm:gap-4">
+        <div class="order-3 w-full md:order-none md:w-auto flex items-center justify-center gap-2 sm:gap-4">
             <!-- Undo / Redo History Controls -->
             <div class="flex items-center bg-zinc-100 dark:bg-zinc-800 rounded-xl p-1 border border-zinc-200 dark:border-zinc-700">
                 <button id="undo-btn" onclick="undo()" disabled class="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-zinc-700 disabled:opacity-35 disabled:pointer-events-none transition text-zinc-700 dark:text-zinc-200" title="Undo (Ctrl+Z)">
@@ -206,7 +218,7 @@
         </div>
 
         <!-- Right Actions: Theme & Export -->
-        <div class="flex items-center gap-2">
+        <div class="ml-auto md:ml-0 flex items-center gap-1 sm:gap-2">
             <button onclick="openClearConfirmModal()" class="p-2 rounded-xl text-zinc-500 hover:text-red-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" title="Bersihkan Kanvas">
                 <i data-lucide="trash-2" class="w-4 h-4"></i>
             </button>
@@ -450,7 +462,7 @@
         <main id="workspace-area" class="order-1 md:order-3 flex-1 bg-zinc-200/70 dark:bg-zinc-950 relative overflow-auto flex items-center justify-start p-4 sm:p-10 select-none" onclick="deselectAll(event)">
             
             <!-- Floating Selected Element Inspector Toolbar -->
-            <div id="floating-toolbar" class="hidden fixed top-14 sm:top-16 left-1/2 -translate-x-1/2 z-40 bg-white/95 dark:bg-zinc-800/95 backdrop-blur border border-zinc-200 dark:border-zinc-700 shadow-xl rounded-2xl px-2.5 py-1.5 flex items-center gap-1 sm:gap-2 overflow-x-auto no-scrollbar max-w-[96vw]">
+            <div id="floating-toolbar" class="hidden fixed top-24 md:top-16 left-1/2 -translate-x-1/2 z-40 bg-white/95 dark:bg-zinc-800/95 backdrop-blur border border-zinc-200 dark:border-zinc-700 shadow-xl rounded-2xl px-2.5 py-1.5 flex items-center gap-1 sm:gap-2 w-[96vw] md:w-max flex-wrap md:flex-nowrap justify-center md:justify-start overflow-x-hidden md:overflow-visible overflow-y-auto max-h-[36vh] md:max-h-none no-scrollbar max-w-[96vw]">
                 
                 <!-- Text-specific controls -->
                 <div id="text-controls" class="hidden flex items-center gap-1.5 border-r border-zinc-200 dark:border-zinc-700 pr-2">
