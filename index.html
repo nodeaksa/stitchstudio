@@ -39,14 +39,34 @@
             height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.1);
+            background: rgba(15, 23, 42, 0.05);
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(100, 116, 139, 0.4);
+            background: rgba(100, 116, 139, 0.3);
             border-radius: 9999px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(100, 116, 139, 0.7);
+            background: rgba(100, 116, 139, 0.6);
+        }
+
+        /* Studio Workspace Canvas Pattern */
+        #workspace-area {
+            background-color: #f3f4f6;
+            background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark #workspace-area {
+            background-color: #0c0d0f;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Elevated Realistic Artboard Shadow */
+        #seamless-canvas {
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+        }
+        .dark #seamless-canvas {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
         }
 
         /* Subtle Canvas Textures */
@@ -65,46 +85,46 @@
             background-size: 20px 20px;
         }
 
-        /* Selection & Handles */
+        /* Selection & Handles - Crisp Design Tool Styling */
         .canvas-element {
             user-select: none;
             touch-action: none;
         }
         .canvas-element.selected {
-            outline: 2px solid #8b5cf6;
+            outline: 2px solid #2563eb;
             outline-offset: 2px;
         }
         .canvas-element.editing-text {
-            outline: 2px solid #3b82f6;
-            outline-offset: 3px;
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
             cursor: text !important;
         }
         .canvas-element.crop-mode {
             outline: 2px dashed #10b981;
-            outline-offset: 3px;
+            outline-offset: 2px;
             cursor: grab !important;
         }
         .canvas-element.crop-mode:active {
             cursor: grabbing !important;
         }
         .resize-handle {
-            width: 14px;
-            height: 14px;
+            width: 11px;
+            height: 11px;
             background: #ffffff;
-            border: 2px solid #8b5cf6;
+            border: 1.5px solid #2563eb;
             border-radius: 50%;
             position: absolute;
             z-index: 30;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.25);
         }
         .rotate-handle {
-            width: 22px;
-            height: 22px;
-            background: #8b5cf6;
+            width: 20px;
+            height: 20px;
+            background: #2563eb;
             color: white;
             border-radius: 50%;
             position: absolute;
-            top: -32px;
+            top: -28px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -112,16 +132,16 @@
             justify-content: center;
             cursor: grab;
             z-index: 30;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.25);
         }
         .rotate-handle::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 50%;
-            width: 2px;
-            height: 10px;
-            background: #8b5cf6;
+            width: 1.5px;
+            height: 8px;
+            background: #2563eb;
             transform: translateX(-50%);
         }
 
@@ -169,14 +189,14 @@
     </svg>
 
     <!-- TOP NAVIGATION BAR -->
-    <header class="h-auto md:h-14 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-2 sm:px-5 py-2 md:py-0 flex flex-wrap md:flex-nowrap items-center justify-between gap-y-2 shrink-0 z-30">
+    <header class="h-auto md:h-14 border-b border-zinc-200/80 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md px-2 sm:px-5 py-2 md:py-0 flex flex-wrap md:flex-nowrap items-center justify-between gap-y-2 shrink-0 z-30">
         <!-- Brand Logo -->
         <div class="flex items-center gap-2.5 shrink-0">
-            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-violet-600 to-fuchsia-500 flex items-center justify-center text-white font-display font-bold text-lg shadow-md">
+            <div class="w-8 h-8 rounded-xl bg-zinc-900 dark:bg-zinc-100 flex items-center justify-center text-white dark:text-zinc-900 font-display font-bold text-base shadow-sm">
                 S
             </div>
             <div>
-                <h1 class="font-display font-bold text-sm sm:text-base tracking-tight leading-none">Stitch <span class="text-violet-500">Studio</span></h1>
+                <h1 class="font-display font-bold text-sm sm:text-base tracking-tight leading-none text-zinc-900 dark:text-zinc-100">Stitch <span class="text-zinc-400 dark:text-zinc-500 font-normal">Studio</span></h1>
                 <p class="text-[10px] text-zinc-500 dark:text-zinc-400 hidden sm:block">Seamless IG Carousel Maker</p>
             </div>
         </div>
@@ -184,7 +204,7 @@
         <!-- Center Controls: Slide Count & Canvas Zoom -->
         <div class="order-3 w-full md:order-none md:w-auto flex items-center justify-center gap-2 sm:gap-4">
             <!-- Undo / Redo History Controls -->
-            <div class="flex items-center bg-zinc-100 dark:bg-zinc-800 rounded-xl p-1 border border-zinc-200 dark:border-zinc-700">
+            <div class="flex items-center bg-zinc-100/80 dark:bg-zinc-800/60 rounded-xl p-1 border border-zinc-200/80 dark:border-zinc-800">
                 <button id="undo-btn" onclick="undo()" disabled class="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-zinc-700 disabled:opacity-35 disabled:pointer-events-none transition text-zinc-700 dark:text-zinc-200" title="Undo (Ctrl+Z)">
                     <i data-lucide="undo-2" class="w-3.5 h-3.5"></i>
                 </button>
@@ -194,7 +214,7 @@
             </div>
 
             <!-- Slide Counter -->
-            <div class="flex items-center bg-zinc-100 dark:bg-zinc-800 rounded-xl p-1 border border-zinc-200 dark:border-zinc-700">
+            <div class="flex items-center bg-zinc-100/80 dark:bg-zinc-800/60 rounded-xl p-1 border border-zinc-200/80 dark:border-zinc-800">
                 <span class="text-[11px] font-medium px-2 text-zinc-500 dark:text-zinc-400 hidden md:inline">Slides:</span>
                 <button onclick="changeSlideCount(-1)" class="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-zinc-700 transition text-zinc-700 dark:text-zinc-200" title="Kurangi Slide">
                     <i data-lucide="minus" class="w-3.5 h-3.5"></i>
@@ -206,31 +226,31 @@
             </div>
 
             <!-- Zoom Controls -->
-            <div class="flex items-center bg-zinc-100 dark:bg-zinc-800 rounded-xl p-1 border border-zinc-200 dark:border-zinc-700">
-                <button onclick="adjustZoom(-0.1)" class="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-zinc-700 transition" title="Zoom Out">
+            <div class="flex items-center bg-zinc-100/80 dark:bg-zinc-800/60 rounded-xl p-1 border border-zinc-200/80 dark:border-zinc-800">
+                <button onclick="adjustZoom(-0.1)" class="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-zinc-700 transition text-zinc-700 dark:text-zinc-200" title="Zoom Out">
                     <i data-lucide="zoom-out" class="w-3.5 h-3.5"></i>
                 </button>
                 <span id="zoom-display" class="px-1.5 sm:px-2 text-[11px] sm:text-xs font-medium tabular-nums">100%</span>
-                <button onclick="adjustZoom(0.1)" class="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-zinc-700 transition" title="Zoom In">
+                <button onclick="adjustZoom(0.1)" class="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-zinc-700 transition text-zinc-700 dark:text-zinc-200" title="Zoom In">
                     <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
                 </button>
             </div>
         </div>
 
         <!-- Right Actions: Theme & Export -->
-        <div class="ml-auto md:ml-0 flex items-center gap-1 sm:gap-2">
-            <button onclick="openClearConfirmModal()" class="p-2 rounded-xl text-zinc-500 hover:text-red-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" title="Bersihkan Kanvas">
+        <div class="ml-auto md:ml-0 flex items-center gap-1.5 sm:gap-2">
+            <button onclick="openClearConfirmModal()" class="p-2 rounded-xl text-zinc-400 hover:text-red-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" title="Bersihkan Kanvas">
                 <i data-lucide="trash-2" class="w-4 h-4"></i>
             </button>
-            <button onclick="toggleTheme()" class="p-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" title="Ganti Tema Gelap/Terang">
+            <button onclick="toggleTheme()" class="p-2 rounded-xl text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" title="Ganti Tema Gelap/Terang">
                 <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
                 <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
             </button>
-            <a href="https://saweria.co/aksa30" target="_blank" rel="noopener noreferrer" aria-label="Traktir Kopi — dukung Stitch Studio di Saweria" title="Traktir Kopi" class="bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 hover:bg-amber-200 dark:hover:bg-amber-900/70 text-[10px] sm:text-xs font-semibold px-2 sm:px-3 py-2 rounded-xl flex items-center gap-1.5 transition whitespace-nowrap">
+            <a href="https://saweria.co/aksa30" target="_blank" rel="noopener noreferrer" aria-label="Traktir Kopi — dukung Stitch Studio di Saweria" title="Traktir Kopi" class="bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-700/80 text-[10px] sm:text-xs font-medium px-2.5 sm:px-3 py-2 rounded-xl flex items-center gap-1.5 transition whitespace-nowrap">
                 <i data-lucide="coffee" class="w-4 h-4"></i>
                 <span class="hidden sm:inline">Traktir Kopi</span>
             </a>
-            <button onclick="exportCarousel()" class="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-xl shadow-lg shadow-violet-600/20 flex items-center gap-1.5 transition active:scale-95">
+            <button onclick="exportCarousel()" class="bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-white dark:text-zinc-900 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl shadow-sm flex items-center gap-1.5 transition active:scale-95">
                 <i data-lucide="download" class="w-4 h-4"></i>
                 <span>Export <span class="hidden sm:inline">Slides</span></span>
             </button>
@@ -241,8 +261,8 @@
     <div class="flex-1 flex flex-col md:flex-row overflow-hidden relative">
 
         <!-- LEFT TOOL SIDEBAR (Desktop) / BOTTOM NAV (Mobile) -->
-        <aside class="order-2 md:order-1 bg-white dark:bg-zinc-900 border-t md:border-t-0 md:border-r border-zinc-200 dark:border-zinc-800 flex md:flex-col justify-around md:justify-start items-center p-1 md:py-4 md:w-20 shrink-0 z-20 gap-0.5 md:gap-1">
-            <button onclick="switchTab('templates')" data-tab="templates" class="tab-btn active flex flex-col items-center justify-center w-14 h-12 md:w-16 md:h-16 rounded-xl text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-950/50 transition">
+        <aside class="order-2 md:order-1 bg-white dark:bg-zinc-900 border-t md:border-t-0 md:border-r border-zinc-200/80 dark:border-zinc-800 flex md:flex-col justify-around md:justify-start items-center p-1 md:py-4 md:w-20 shrink-0 z-20 gap-0.5 md:gap-1">
+            <button onclick="switchTab('templates')" data-tab="templates" class="tab-btn active flex flex-col items-center justify-center w-14 h-12 md:w-16 md:h-16 rounded-xl text-zinc-900 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-800 font-semibold shadow-sm transition">
                 <i data-lucide="layout-template" class="w-4 h-4 md:w-5 md:h-5 mb-0.5 md:mb-1"></i>
                 <span class="text-[9px] md:text-[10px] font-medium">Template</span>
             </button>
@@ -273,21 +293,21 @@
         </aside>
 
         <!-- SECONDARY DRAWER PANEL -->
-        <div id="drawer-panel" class="order-3 md:order-2 w-full md:w-72 lg:w-80 bg-white dark:bg-zinc-900 border-t md:border-t-0 md:border-r border-zinc-200 dark:border-zinc-800 overflow-y-auto shrink-0 z-10 max-h-52 sm:max-h-60 md:max-h-full transition-all">
+        <div id="drawer-panel" class="order-3 md:order-2 w-full md:w-72 lg:w-80 bg-white dark:bg-zinc-900 border-t md:border-t-0 md:border-r border-zinc-200/80 dark:border-zinc-800 overflow-y-auto shrink-0 z-10 max-h-52 sm:max-h-60 md:max-h-full transition-all">
             
             <!-- TAB 1: TEMPLATES -->
             <div id="panel-templates" class="tab-panel p-3.5 md:p-4 space-y-3">
                 <div class="flex items-center justify-between">
-                    <h2 class="font-display font-bold text-sm">100 Template</h2>
-                    <span id="template-count-badge" class="text-[10px] bg-violet-100 dark:bg-violet-900/40 text-violet-600 dark:text-violet-300 px-2 py-0.5 rounded-full font-medium">100 Preset</span>
+                    <h2 class="font-display font-bold text-sm text-zinc-900 dark:text-zinc-100">150 Template</h2>
+                    <span id="template-count-badge" class="text-[10px] bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-700/80 px-2 py-0.5 rounded-full font-medium">150 Preset</span>
                 </div>
 
                 <!-- Search & Category Organization -->
                 <div class="space-y-2">
                     <div class="relative">
                         <i data-lucide="search" class="w-3.5 h-3.5 text-zinc-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
-                        <input type="text" id="template-search-input" oninput="filterTemplates()" placeholder="Cari 100 template (Bento, Overlap, Split)..."
-                               class="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800/70 outline-none focus:border-violet-500 transition">
+                        <input type="text" id="template-search-input" oninput="filterTemplates()" placeholder="Cari 150 template (Bento, Overlap, Split)..."
+                               class="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800/70 outline-none focus:border-zinc-400 dark:focus:border-zinc-500 transition">
                     </div>
                     <div id="template-category-pills" class="flex gap-1.5 overflow-x-auto pb-1 no-scrollbar">
                         <!-- Populated via JS -->
@@ -295,18 +315,18 @@
                 </div>
                 
                 <div id="template-gallery-list" class="grid grid-cols-2 md:grid-cols-1 gap-2.5">
-                    <!-- 100 Organized Templates Populated via JS -->
+                    <!-- 150 Organized Templates Populated via JS -->
                 </div>
             </div>
 
             <!-- TAB 2: PHOTOS -->
             <div id="panel-photos" class="tab-panel hidden p-4 space-y-4">
-                <h2 class="font-display font-bold text-sm">Foto & Bentuk Masking</h2>
+                <h2 class="font-display font-bold text-sm text-zinc-900 dark:text-zinc-100">Foto & Bentuk Masking</h2>
                 
                 <!-- Upload Button -->
-                <label class="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-violet-400/60 hover:border-violet-500 rounded-2xl cursor-pointer bg-violet-50/50 dark:bg-violet-950/20 hover:bg-violet-50 dark:hover:bg-violet-950/40 transition p-3 text-center">
-                    <i data-lucide="upload-cloud" class="w-6 h-6 text-violet-500 mb-1"></i>
-                    <span class="text-xs font-semibold text-violet-600 dark:text-violet-300">Upload Foto dari Perangkat</span>
+                <label class="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500 rounded-2xl cursor-pointer bg-zinc-50/70 dark:bg-zinc-800/30 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/50 transition p-3 text-center">
+                    <i data-lucide="upload-cloud" class="w-6 h-6 text-zinc-600 dark:text-zinc-300 mb-1"></i>
+                    <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200">Upload Foto dari Perangkat</span>
                     <span class="text-[10px] text-zinc-500">JPG, PNG, WEBP, HEIC iPhone (Multi-upload)</span>
                     <input type="file" id="photo-upload-input" accept="image/*,.heic,.heif" multiple class="hidden" onchange="handlePhotoUpload(event)">
                 </label>
@@ -315,7 +335,7 @@
                 <div class="bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-3 space-y-2">
                     <div class="flex items-center justify-between">
                         <h3 class="text-xs font-semibold text-zinc-700 dark:text-zinc-200">Bentuk Foto (Shape Mask)</h3>
-                        <span class="text-[10px] text-violet-500 font-medium">Klik foto lalu pilih</span>
+                        <span class="text-[10px] text-zinc-500 font-medium">Klik foto lalu pilih</span>
                     </div>
                     <div id="sidebar-shape-grid" class="grid grid-cols-5 gap-1.5">
                         <!-- Populated via JS -->
@@ -326,10 +346,10 @@
                 <div id="sidebar-crop-panel" class="bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-3 space-y-2.5">
                     <div class="flex items-center justify-between">
                         <h3 class="text-xs font-semibold text-zinc-700 dark:text-zinc-200 flex items-center gap-1.5">
-                            <i data-lucide="crop" class="w-3.5 h-3.5 text-emerald-500"></i>
+                            <i data-lucide="crop" class="w-3.5 h-3.5 text-zinc-600 dark:text-zinc-300"></i>
                             <span>Posisi & Zoom Isi Foto</span>
                         </h3>
-                        <button type="button" onclick="resetPhotoCrop()" class="text-[10px] text-violet-500 hover:underline font-medium">Reset</button>
+                        <button type="button" onclick="resetPhotoCrop()" class="text-[10px] text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:underline font-medium">Reset</button>
                     </div>
                     <p id="sidebar-crop-hint" class="text-[10px] text-zinc-500 dark:text-zinc-400">Pilih foto, tekan “Geser Foto”, lalu tarik fotonya di dalam frame untuk memilih bagian yang terlihat.</p>
                     <div id="sidebar-crop-controls" class="hidden space-y-2 pt-1">
@@ -337,32 +357,32 @@
                             <div class="flex items-center justify-between text-[10px] text-zinc-500 mb-1">
                                 <span>Zoom Isi Foto</span>
                                 <div class="flex items-center gap-1">
-                                    <button type="button" onclick="nudgePhotoZoom(-0.1)" class="w-5 h-5 rounded bg-zinc-200 dark:bg-zinc-700 hover:bg-violet-600 hover:text-white flex items-center justify-center transition" title="Zoom Out Isi Foto">
+                                    <button type="button" onclick="nudgePhotoZoom(-0.1)" class="w-5 h-5 rounded bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 flex items-center justify-center transition" title="Zoom Out Isi Foto">
                                         <i data-lucide="zoom-out" class="w-3 h-3"></i>
                                     </button>
                                     <span id="crop-zoom-val" class="font-mono font-semibold text-zinc-700 dark:text-zinc-200 w-9 text-center">100%</span>
-                                    <button type="button" onclick="nudgePhotoZoom(0.1)" class="w-5 h-5 rounded bg-zinc-200 dark:bg-zinc-700 hover:bg-violet-600 hover:text-white flex items-center justify-center transition" title="Zoom In Isi Foto">
+                                    <button type="button" onclick="nudgePhotoZoom(0.1)" class="w-5 h-5 rounded bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 flex items-center justify-center transition" title="Zoom In Isi Foto">
                                         <i data-lucide="zoom-in" class="w-3 h-3"></i>
                                     </button>
                                 </div>
                             </div>
-                            <input type="range" id="crop-zoom-slider" min="1" max="3" step="0.05" value="1" oninput="updatePhotoCropProp('imgZoom', parseFloat(this.value))" class="w-full accent-violet-600 h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-lg cursor-pointer">
+                            <input type="range" id="crop-zoom-slider" min="1" max="3" step="0.05" value="1" oninput="updatePhotoCropProp('imgZoom', parseFloat(this.value))" class="w-full accent-zinc-900 dark:accent-zinc-100 h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-lg cursor-pointer">
                         </div>
                         <div>
                             <div class="flex justify-between text-[10px] text-zinc-500 mb-0.5">
                                 <span>Geser Kiri / Kanan (X)</span>
                                 <span id="crop-x-val" class="font-mono font-semibold text-zinc-700 dark:text-zinc-200">0</span>
                             </div>
-                            <input type="range" id="crop-x-slider" min="-150" max="150" step="1" value="0" oninput="updatePhotoCropProp('imgOffsetX', parseFloat(this.value))" class="w-full accent-violet-600 h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-lg cursor-pointer">
+                            <input type="range" id="crop-x-slider" min="-150" max="150" step="1" value="0" oninput="updatePhotoCropProp('imgOffsetX', parseFloat(this.value))" class="w-full accent-zinc-900 dark:accent-zinc-100 h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-lg cursor-pointer">
                         </div>
                         <div>
                             <div class="flex justify-between text-[10px] text-zinc-500 mb-0.5">
                                 <span>Geser Atas / Bawah (Y)</span>
                                 <span id="crop-y-val" class="font-mono font-semibold text-zinc-700 dark:text-zinc-200">0</span>
                             </div>
-                            <input type="range" id="crop-y-slider" min="-150" max="150" step="1" value="0" oninput="updatePhotoCropProp('imgOffsetY', parseFloat(this.value))" class="w-full accent-violet-600 h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-lg cursor-pointer">
+                            <input type="range" id="crop-y-slider" min="-150" max="150" step="1" value="0" oninput="updatePhotoCropProp('imgOffsetY', parseFloat(this.value))" class="w-full accent-zinc-900 dark:accent-zinc-100 h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-lg cursor-pointer">
                         </div>
-                        <button type="button" onclick="toggleCropMode()" id="sidebar-crop-mode-btn" class="w-full py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5">
+                        <button type="button" onclick="toggleCropMode()" id="sidebar-crop-mode-btn" class="w-full py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-white dark:text-zinc-900 text-xs font-semibold transition flex items-center justify-center gap-1.5">
                             <i data-lucide="move" class="w-3.5 h-3.5"></i>
                             <span>Geser Foto di Dalam Frame</span>
                         </button>
@@ -381,19 +401,19 @@
             <div id="panel-text" class="tab-panel hidden p-4 space-y-4">
                 <h2 class="font-display font-bold text-sm">Tipografi & Teks</h2>
                 <div class="space-y-2">
-                    <button onclick="addTextElement('Judul Editorial', 'font-serif', 36, true)" class="w-full p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-violet-500 text-left bg-zinc-50 dark:bg-zinc-800/50 transition">
+                    <button onclick="addTextElement('Judul Editorial', 'font-serif', 36, true)" class="w-full p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 text-left bg-zinc-50 dark:bg-zinc-800/50 transition">
                         <span class="font-serif text-xl font-bold block">Tambah Judul Serif</span>
                         <span class="text-[10px] text-zinc-500">Cormorant Garamond • Elegan</span>
                     </button>
-                    <button onclick="addTextElement('BOLD HEADLINE', 'font-display', 32, true)" class="w-full p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-violet-500 text-left bg-zinc-50 dark:bg-zinc-800/50 transition">
+                    <button onclick="addTextElement('BOLD HEADLINE', 'font-display', 32, true)" class="w-full p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 text-left bg-zinc-50 dark:bg-zinc-800/50 transition">
                         <span class="font-display text-lg font-extrabold block">BOLD DISPLAY</span>
                         <span class="text-[10px] text-zinc-500">Syne • Modern & Statement</span>
                     </button>
-                    <button onclick="addTextElement('Catatan estetik harian...', 'font-script', 30, false)" class="w-full p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-violet-500 text-left bg-zinc-50 dark:bg-zinc-800/50 transition">
+                    <button onclick="addTextElement('Catatan estetik harian...', 'font-script', 30, false)" class="w-full p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 text-left bg-zinc-50 dark:bg-zinc-800/50 transition">
                         <span class="font-script text-2xl block">Catatan Tulisan Tangan</span>
                         <span class="text-[10px] text-zinc-500">Caveat • Personal & Hangat</span>
                     </button>
-                    <button onclick="addTextElement('01 / ARCHIVE 2026', 'font-mono', 16, false)" class="w-full p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-violet-500 text-left bg-zinc-50 dark:bg-zinc-800/50 transition">
+                    <button onclick="addTextElement('01 / ARCHIVE 2026', 'font-mono', 16, false)" class="w-full p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 text-left bg-zinc-50 dark:bg-zinc-800/50 transition">
                         <span class="font-mono text-sm block">01 / MONOSPACE TAG</span>
                         <span class="text-[10px] text-zinc-500">Space Mono • Minimalist Label</span>
                     </button>
@@ -434,12 +454,19 @@
                 </div>
 
                 <div>
+                    <label class="text-xs font-medium text-zinc-500 dark:text-zinc-400 block mb-2">Background Mood (lebih hidup)</label>
+                    <div id="background-pattern-grid" class="grid grid-cols-5 gap-2"><button onclick="setCanvasPattern('aurora')" class="w-9 h-9 rounded-xl border border-zinc-300 dark:border-zinc-700 shadow-sm" title="Aurora"></button><button onclick="setCanvasPattern('sunset')" class="w-9 h-9 rounded-xl border border-zinc-300 dark:border-zinc-700 shadow-sm" title="Sunset"></button><button onclick="setCanvasPattern('mesh')" class="w-9 h-9 rounded-xl border border-zinc-300 dark:border-zinc-700 shadow-sm" title="Mesh"></button><button onclick="setCanvasPattern('ocean')" class="w-9 h-9 rounded-xl border border-zinc-300 dark:border-zinc-700 shadow-sm" title="Ocean"></button><button onclick="setCanvasPattern('candy')" class="w-9 h-9 rounded-xl border border-zinc-300 dark:border-zinc-700 shadow-sm" title="Candy"></button><button onclick="setCanvasPattern('sage')" class="w-9 h-9 rounded-xl border border-zinc-300 dark:border-zinc-700 shadow-sm" title="Sage"></button><button onclick="setCanvasPattern('night')" class="w-9 h-9 rounded-xl border border-zinc-300 dark:border-zinc-700 shadow-sm" title="Night"></button><button onclick="setCanvasPattern('paperwash')" class="w-9 h-9 rounded-xl border border-zinc-300 dark:border-zinc-700 shadow-sm" title="Paperwash"></button><button onclick="setCanvasPattern('mono')" class="w-9 h-9 rounded-xl border border-zinc-300 dark:border-zinc-700 shadow-sm" title="Mono"></button><button onclick="setCanvasPattern('lime')" class="w-9 h-9 rounded-xl border border-zinc-300 dark:border-zinc-700 shadow-sm" title="Lime"></button>
+                    </div>
+                    <p class="text-[10px] text-zinc-500 mt-2">Preset baru memakai gradient, glow, dan mesh lembut — tetap aman untuk teks.</p>
+                </div>
+
+                <div>
                     <label class="text-xs font-medium text-zinc-500 dark:text-zinc-400 block mb-2">Tekstur Kertas / Grid</label>
                     <div class="grid grid-cols-2 gap-2">
-                        <button onclick="setCanvasTexture('none')" class="p-2.5 text-xs font-medium rounded-xl border border-zinc-200 dark:border-zinc-700 hover:border-violet-500 transition">Polos (Clean)</button>
-                        <button onclick="setCanvasTexture('paper')" class="p-2.5 text-xs font-medium rounded-xl border border-zinc-200 dark:border-zinc-700 hover:border-violet-500 transition">Kertas Grain</button>
-                        <button onclick="setCanvasTexture('grid')" class="p-2.5 text-xs font-medium rounded-xl border border-zinc-200 dark:border-zinc-700 hover:border-violet-500 transition">Grid Studio</button>
-                        <button onclick="setCanvasTexture('dots')" class="p-2.5 text-xs font-medium rounded-xl border border-zinc-200 dark:border-zinc-700 hover:border-violet-500 transition">Dotted Journal</button>
+                        <button onclick="setCanvasTexture('none')" class="p-2.5 text-xs font-medium rounded-xl border border-zinc-200 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600 transition">Polos (Clean)</button>
+                        <button onclick="setCanvasTexture('paper')" class="p-2.5 text-xs font-medium rounded-xl border border-zinc-200 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600 transition">Kertas Grain</button>
+                        <button onclick="setCanvasTexture('grid')" class="p-2.5 text-xs font-medium rounded-xl border border-zinc-200 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600 transition">Grid Studio</button>
+                        <button onclick="setCanvasTexture('dots')" class="p-2.5 text-xs font-medium rounded-xl border border-zinc-200 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600 transition">Dotted Journal</button>
                     </div>
                 </div>
             </div>
@@ -459,14 +486,14 @@
         </div>
 
         <!-- CENTER WORKSPACE (PANORAMIC SEAMLESS CANVAS) -->
-        <main id="workspace-area" class="order-1 md:order-3 flex-1 bg-zinc-200/70 dark:bg-zinc-950 relative overflow-auto flex items-center justify-start p-4 sm:p-10 select-none" onclick="deselectAll(event)">
+        <main id="workspace-area" class="order-1 md:order-3 flex-1 relative overflow-auto flex items-center justify-start p-4 sm:p-10 select-none" onclick="deselectAll(event)">
             
             <!-- Floating Selected Element Inspector Toolbar -->
-            <div id="floating-toolbar" class="hidden fixed top-24 md:top-16 left-1/2 -translate-x-1/2 z-40 bg-white/95 dark:bg-zinc-800/95 backdrop-blur border border-zinc-200 dark:border-zinc-700 shadow-xl rounded-2xl px-2.5 py-1.5 flex items-center gap-1 sm:gap-2 w-[96vw] md:w-max flex-wrap md:flex-nowrap justify-center md:justify-start overflow-x-hidden md:overflow-visible overflow-y-auto max-h-[36vh] md:max-h-none no-scrollbar max-w-[96vw]">
+            <div id="floating-toolbar" class="hidden fixed top-24 md:top-16 left-1/2 -translate-x-1/2 z-40 bg-white/95 dark:bg-zinc-800/95 backdrop-blur-md border border-zinc-200/80 dark:border-zinc-700/80 shadow-lg rounded-xl px-2.5 py-1.5 flex items-center gap-1 sm:gap-2 w-[96vw] md:w-max flex-wrap md:flex-nowrap justify-center md:justify-start overflow-x-hidden md:overflow-visible overflow-y-auto max-h-[36vh] md:max-h-none no-scrollbar max-w-[96vw]">
                 
                 <!-- Text-specific controls -->
                 <div id="text-controls" class="hidden flex items-center gap-1.5 border-r border-zinc-200 dark:border-zinc-700 pr-2">
-                    <button id="edit-text-btn" onclick="toggleTextEditMode(event)" class="px-2.5 py-1 text-xs rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-200 hover:bg-blue-600 hover:text-white transition font-medium flex items-center gap-1" title="Edit Teks (atau Double-Click / Double-Tap Teks)">
+                    <button id="edit-text-btn" onclick="toggleTextEditMode(event)" class="px-2.5 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-600 transition font-medium flex items-center gap-1" title="Edit Teks (atau Double-Click / Double-Tap Teks)">
                         <i data-lucide="pencil" class="w-3.5 h-3.5"></i> <span id="edit-text-label">Edit Teks</span>
                     </button>
                     <select id="prop-font" onchange="updateSelectedProp('fontFamily', this.value)" class="bg-zinc-100 dark:bg-zinc-700 text-xs rounded-lg px-2 py-1 outline-none">
@@ -477,7 +504,7 @@
                         <option value="font-mono">Mono</option>
                     </select>
                     <input type="color" id="prop-color" onchange="updateSelectedProp('color', this.value)" class="w-6 h-6 rounded cursor-pointer border-0 bg-transparent" title="Warna Teks">
-                    <button onclick="toggleTextBg()" class="px-2 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-700 hover:bg-violet-100 dark:hover:bg-violet-900/40 font-medium" title="Highlight Latar Teks">BG</button>
+                    <button onclick="toggleTextBg()" class="px-2 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-600 font-medium" title="Highlight Latar Teks">BG</button>
                     <button onclick="cycleTextAlign()" class="p-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700" title="Perataan Teks">
                         <i data-lucide="align-center" class="w-3.5 h-3.5"></i>
                     </button>
@@ -485,26 +512,26 @@
 
                 <!-- Image-specific controls -->
                 <div id="image-controls" class="hidden flex items-center gap-1.5 border-r border-zinc-200 dark:border-zinc-700 pr-2 relative">
-                    <button onclick="triggerSlotReplace(state.selectedId)" class="px-2.5 py-1 text-xs rounded-lg bg-violet-600 hover:bg-violet-500 text-white transition font-medium flex items-center gap-1" title="Ganti / Isi Foto dari Galeri">
+                    <button onclick="triggerSlotReplace(state.selectedId)" class="px-2.5 py-1 text-xs rounded-lg bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-white dark:text-zinc-900 shadow-sm transition font-medium flex items-center gap-1" title="Ganti / Isi Foto dari Galeri">
                         <i data-lucide="image-plus" class="w-3.5 h-3.5"></i> <span>Ganti Foto</span>
                     </button>
-                    <button id="crop-mode-btn" onclick="toggleCropMode(event)" class="px-2.5 py-1 text-xs rounded-lg bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-200 hover:bg-emerald-600 hover:text-white transition font-medium flex items-center gap-1" title="Geser Posisi Foto di Dalam Bingkai (atau Double-Click Foto)">
+                    <button id="crop-mode-btn" onclick="toggleCropMode(event)" class="px-2.5 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-600 transition font-medium flex items-center gap-1" title="Geser Posisi Foto di Dalam Bingkai (atau Double-Click Foto)">
                         <i data-lucide="crop" class="w-3.5 h-3.5"></i> <span id="crop-btn-label">Geser Foto</span>
                     </button>
                     <div id="crop-inline-controls" class="flex items-center gap-1 bg-zinc-100 dark:bg-zinc-700/80 px-2 py-1 rounded-lg border border-zinc-200 dark:border-zinc-600">
-                        <button onclick="nudgePhotoZoom(-0.1)" class="p-0.5 rounded hover:bg-white dark:hover:bg-zinc-600 hover:text-violet-500 transition" title="Zoom Out Isi Foto">
+                        <button onclick="nudgePhotoZoom(-0.1)" class="p-0.5 rounded hover:bg-white dark:hover:bg-zinc-600 hover:text-zinc-900 dark:hover:text-white transition" title="Zoom Out Isi Foto">
                             <i data-lucide="zoom-out" class="w-3.5 h-3.5"></i>
                         </button>
                         <span id="toolbar-crop-zoom" class="text-[10px] font-mono font-bold tabular-nums w-9 text-center">100%</span>
-                        <button onclick="nudgePhotoZoom(0.1)" class="p-0.5 rounded hover:bg-white dark:hover:bg-zinc-600 hover:text-violet-500 transition" title="Zoom In Isi Foto">
+                        <button onclick="nudgePhotoZoom(0.1)" class="p-0.5 rounded hover:bg-white dark:hover:bg-zinc-600 hover:text-zinc-900 dark:hover:text-white transition" title="Zoom In Isi Foto">
                             <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
                         </button>
-                        <button onclick="resetPhotoCrop()" class="ml-1 pl-1.5 border-l border-zinc-300 dark:border-zinc-500 text-[10px] text-violet-600 dark:text-violet-300 font-semibold hover:underline" title="Reset Posisi & Zoom">Reset</button>
+                        <button onclick="resetPhotoCrop()" class="ml-1 pl-1.5 border-l border-zinc-300 dark:border-zinc-500 text-[10px] text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white font-medium hover:underline" title="Reset Posisi & Zoom">Reset</button>
                     </div>
-                    <button onclick="toggleShapePopover(event)" class="px-2.5 py-1 text-xs rounded-lg bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-200 hover:bg-violet-600 hover:text-white transition font-medium flex items-center gap-1" title="Ubah Bentuk Potongan Foto">
+                    <button onclick="toggleShapePopover(event)" class="px-2.5 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-600 transition font-medium flex items-center gap-1" title="Ubah Bentuk Potongan Foto">
                         <i data-lucide="shapes" class="w-3.5 h-3.5"></i> Bentuk
                     </button>
-                    <button onclick="cycleFrameStyle()" class="px-2.5 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-700 hover:bg-violet-500 hover:text-white transition font-medium flex items-center gap-1" title="Ubah Bingkai Foto">
+                    <button onclick="cycleFrameStyle()" class="px-2.5 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-600 transition font-medium flex items-center gap-1" title="Ubah Bingkai Foto">
                         <i data-lucide="frame" class="w-3.5 h-3.5"></i> <span id="frame-btn-label">Frame</span>
                     </button>
 
@@ -525,12 +552,12 @@
                     <button onclick="moveLayer('back')" class="p-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 transition" title="Paling Belakang (Send to Back • Shift+[)">
                         <i data-lucide="arrow-down-to-line" class="w-3.5 h-3.5"></i>
                     </button>
-                    <button onclick="moveLayer('backward')" class="px-2 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-700 hover:bg-violet-600 hover:text-white text-zinc-800 dark:text-zinc-100 text-xs font-medium flex items-center gap-1 transition" title="Mundurkan 1 Lapis (Send Backward • [)">
+                    <button onclick="moveLayer('backward')" class="px-2 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-600 text-zinc-800 dark:text-zinc-100 text-xs font-medium flex items-center gap-1 transition" title="Mundurkan 1 Lapis (Send Backward • [)">
                         <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
                         <span>Mundurkan</span>
                     </button>
-                    <span id="layer-badge" class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 font-bold tabular-nums" title="Posisi Layer">1/1</span>
-                    <button onclick="moveLayer('forward')" class="px-2 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-700 hover:bg-violet-600 hover:text-white text-zinc-800 dark:text-zinc-100 text-xs font-medium flex items-center gap-1 transition" title="Majukan 1 Lapis (Bring Forward • ])">
+                    <span id="layer-badge" class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300 font-bold tabular-nums" title="Posisi Layer">1/1</span>
+                    <button onclick="moveLayer('forward')" class="px-2 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-600 text-zinc-800 dark:text-zinc-100 text-xs font-medium flex items-center gap-1 transition" title="Majukan 1 Lapis (Bring Forward • ])">
                         <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
                         <span>Majukan</span>
                     </button>
@@ -556,7 +583,7 @@
                 </div>
 
                 <!-- THE SEAMLESS PANORAMIC ARTBOARD -->
-                <div id="seamless-canvas" class="relative shadow-2xl overflow-hidden transition-colors duration-200" style="background-color: #F5F1EB;">
+                <div id="seamless-canvas" class="relative overflow-hidden transition-colors duration-200" style="background-color: #F5F1EB;">
                     <!-- Texture Overlay -->
                     <div id="canvas-texture-layer" class="absolute inset-0 pointer-events-none z-0"></div>
                     
@@ -580,13 +607,13 @@
 
     <!-- CUSTOM CONFIRMATION MODAL (Clear Canvas) -->
     <div id="confirm-clear-modal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeClearConfirmModal()">
-        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl max-w-sm w-full p-5 shadow-2xl space-y-4" onclick="event.stopPropagation()">
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-sm w-full p-5 shadow-xl space-y-4" onclick="event.stopPropagation()">
             <div class="flex items-start gap-3">
-                <div class="w-10 h-10 rounded-2xl bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 flex items-center justify-center shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 flex items-center justify-center shrink-0">
                     <i data-lucide="alert-triangle" class="w-5 h-5"></i>
                 </div>
                 <div>
-                    <h3 class="font-display font-bold text-base">Bersihkan Semua Kanvas?</h3>
+                    <h3 class="font-display font-bold text-base text-zinc-900 dark:text-zinc-100">Bersihkan Semua Kanvas?</h3>
                     <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Semua foto, teks, dan stiker pada slide saat ini akan dihapus. Kamu tetap bisa membatalkannya lewat tombol Undo.</p>
                 </div>
             </div>
@@ -594,7 +621,7 @@
                 <button type="button" onclick="closeClearConfirmModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 transition">
                     Batal
                 </button>
-                <button type="button" onclick="confirmClearCanvas()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-red-600 hover:bg-red-500 text-white shadow-md transition">
+                <button type="button" onclick="confirmClearCanvas()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-red-600 hover:bg-red-500 text-white shadow-sm transition">
                     Ya, Bersihkan
                 </button>
             </div>
@@ -603,7 +630,7 @@
 
     <!-- EXPORT PREVIEW & DOWNLOAD MODAL -->
     <div id="export-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-xl">
             <div class="p-5 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
                 <div>
                     <h3 class="font-display font-bold text-lg">Hasil Potongan Carousel (Siap Upload IG)</h3>
@@ -626,7 +653,7 @@
                         <i data-lucide="share-2" class="w-4 h-4"></i>
                         <span>Share ke HP</span>
                     </button>
-                    <button onclick="downloadAllSlides()" class="bg-violet-600 hover:bg-violet-500 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-lg flex items-center gap-2 transition">
+                    <button onclick="downloadAllSlides()" class="bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-white dark:text-zinc-900 text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm flex items-center gap-2 transition active:scale-95">
                         <i data-lucide="archive" class="w-4 h-4"></i>
                         <span>Download ZIP Semua</span>
                     </button>
@@ -656,6 +683,7 @@
             slideCount: 3,
             zoom: 1,
             bgColor: '#F5F1EB',
+            bgPattern: 'paperwash',
             texture: 'paper',
             elements: [],
             selectedId: null,
@@ -738,6 +766,7 @@
             return JSON.stringify({
                 slideCount: state.slideCount,
                 bgColor: state.bgColor,
+                bgPattern: state.bgPattern || 'none',
                 texture: state.texture,
                 elements: lightElements,
                 nextId: state.nextId
@@ -766,6 +795,7 @@
             const data = JSON.parse(snapStr);
             state.slideCount = data.slideCount;
             state.bgColor = data.bgColor;
+            state.bgPattern = data.bgPattern || 'none';
             state.texture = data.texture;
             state.elements = (data.elements || []).map(el => {
                 if (el.type === 'image' && el.assetId && imageAssetsMap.has(el.assetId)) {
@@ -1107,6 +1137,13 @@
             populateStockGallery();
             populateStickerGrid();
             populateShapePickers();
+            document.querySelectorAll('#background-pattern-grid button').forEach(btn => {
+                const match = btn.getAttribute('onclick')?.match(/'([^']+)'/);
+                if (match && BACKGROUND_PRESETS[match[1]]) {
+                    btn.style.backgroundColor = BACKGROUND_PRESETS[match[1]].base;
+                    btn.style.backgroundImage = BACKGROUND_PRESETS[match[1]].css;
+                }
+            });
             updateCanvasDimensions();
 
             if (!tryRestoreAutosave()) {
@@ -1246,7 +1283,7 @@
         function populateStickerGrid() {
             const grid = document.getElementById('sticker-grid');
             grid.innerHTML = STICKERS.map((st, idx) => `
-                <button onclick="addStickerElement(${idx})" class="aspect-square rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-violet-500 bg-zinc-50 dark:bg-zinc-800/50 p-2.5 flex flex-col items-center justify-center gap-1 transition">
+                <button onclick="addStickerElement(${idx})" class="aspect-square rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 bg-zinc-50 dark:bg-zinc-800/50 p-2.5 flex flex-col items-center justify-center gap-1 transition">
                     <div class="w-12 h-12 flex items-center justify-center">${st.svg}</div>
                     <span class="text-[9px] text-zinc-500 truncate w-full text-center">${st.name}</span>
                 </button>
@@ -1259,7 +1296,7 @@
                 if (!container) return;
                 container.innerHTML = PHOTO_SHAPES.map(sh => `
                     <button type="button" onclick="setPhotoShape('${sh.id}', ${closeAfter})" title="${sh.name}"
-                            class="shape-choice-btn flex flex-col items-center justify-center p-1.5 rounded-xl border border-zinc-200 dark:border-zinc-700 hover:border-violet-500 hover:bg-violet-50 dark:hover:bg-violet-950/50 text-zinc-700 dark:text-zinc-200 transition gap-0.5"
+                            class="shape-choice-btn flex flex-col items-center justify-center p-1.5 rounded-xl border border-zinc-200 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-200 transition gap-0.5"
                             data-shape="${sh.id}">
                         ${sh.icon}
                         <span class="text-[8px] truncate w-full text-center">${sh.name}</span>
@@ -1318,6 +1355,7 @@
             canvas.style.width = `${totalWidth}px`;
             canvas.style.height = `${SLIDE_HEIGHT}px`;
             canvas.style.backgroundColor = state.bgColor;
+            canvas.style.backgroundImage = getBackgroundCss(state.bgPattern || 'none');
 
             // Update texture
             const texLayer = document.getElementById('canvas-texture-layer');
@@ -1339,7 +1377,7 @@
                 const g = document.createElement('div');
                 g.style.width = `${SLIDE_WIDTH}px`;
                 g.style.height = `${SLIDE_HEIGHT}px`;
-                g.className = i < state.slideCount - 1 ? 'border-r-2 border-dashed border-violet-500/50 relative' : 'relative';
+                g.className = i < state.slideCount - 1 ? 'border-r border-dashed border-zinc-400/40 dark:border-zinc-600/40 relative' : 'relative';
                 guides.appendChild(g);
             }
 
@@ -1365,7 +1403,37 @@
 
         function setCanvasBg(color) {
             state.bgColor = color;
-            document.getElementById('seamless-canvas').style.backgroundColor = color;
+            state.bgPattern = 'none';
+            const canvas = document.getElementById('seamless-canvas');
+            canvas.style.backgroundColor = color;
+            canvas.style.backgroundImage = 'none';
+            saveHistory();
+        }
+
+        const BACKGROUND_PRESETS = {
+            none: { base: '#F5F1EB', css: 'none' },
+            aurora: { base: '#18243A', css: 'radial-gradient(circle at 18% 18%, rgba(73,214,194,.9), transparent 34%), radial-gradient(circle at 82% 12%, rgba(132,93,255,.85), transparent 38%), linear-gradient(135deg, #101827 0%, #1d274c 48%, #142b36 100%)' },
+            sunset: { base: '#7C3F58', css: 'radial-gradient(circle at 76% 16%, rgba(255,224,156,.95), transparent 28%), linear-gradient(145deg, #3d1f49 0%, #a04b58 48%, #f09a63 100%)' },
+            mesh: { base: '#E7D8C7', css: 'radial-gradient(circle at 12% 18%, rgba(255,255,255,.9), transparent 28%), radial-gradient(circle at 90% 76%, rgba(209,137,107,.55), transparent 32%), radial-gradient(circle at 55% 42%, rgba(245,193,154,.45), transparent 38%), #e7d8c7' },
+            ocean: { base: '#164E63', css: 'radial-gradient(circle at 20% 12%, rgba(125,235,220,.65), transparent 30%), radial-gradient(circle at 80% 86%, rgba(47,95,180,.7), transparent 36%), linear-gradient(160deg, #082f49, #0e7490 48%, #164e63)' },
+            candy: { base: '#F3A7C4', css: 'radial-gradient(circle at 20% 20%, rgba(255,255,255,.8), transparent 24%), linear-gradient(135deg, #fbcfe8, #f9a8d4 48%, #c4b5fd)' },
+            sage: { base: '#61796B', css: 'radial-gradient(circle at 72% 20%, rgba(232,245,220,.7), transparent 30%), linear-gradient(145deg, #273b36, #718c78 55%, #c6d7bd)' },
+            night: { base: '#111827', css: 'radial-gradient(circle at 28% 20%, rgba(70,88,170,.7), transparent 28%), radial-gradient(circle at 78% 76%, rgba(180,76,133,.5), transparent 30%), #111827' },
+            paperwash: { base: '#F5F1EB', css: 'radial-gradient(circle at 10% 15%, rgba(255,255,255,.75), transparent 24%), radial-gradient(circle at 90% 80%, rgba(214,184,151,.26), transparent 34%), linear-gradient(135deg, #f5f1eb, #e8ded0)' },
+            mono: { base: '#D4D4D8', css: 'repeating-linear-gradient(135deg, rgba(255,255,255,.3) 0 2px, transparent 2px 14px), linear-gradient(135deg, #27272a, #a1a1aa)' },
+            lime: { base: '#B9D86C', css: 'radial-gradient(circle at 76% 18%, rgba(255,255,224,.8), transparent 28%), linear-gradient(135deg, #365314, #a3e635 55%, #facc15)' }
+        };
+
+        function getBackgroundCss(pattern = 'none') {
+            return BACKGROUND_PRESETS[pattern]?.css || 'none';
+        }
+
+        function setCanvasPattern(pattern) {
+            const preset = BACKGROUND_PRESETS[pattern];
+            if (!preset) return;
+            state.bgPattern = pattern;
+            state.bgColor = preset.base;
+            updateCanvasDimensions();
             saveHistory();
         }
 
@@ -1565,7 +1633,7 @@
                                     onmousedown="event.stopPropagation()"
                                     ontouchstart="event.stopPropagation()"
                                     title="Klik untuk isi foto dari galeri"
-                                    class="pointer-events-auto w-8 h-8 rounded-full bg-zinc-800/85 hover:bg-violet-600 text-white shadow-lg flex items-center justify-center transition transform hover:scale-110 active:scale-95 border border-white/40">
+                                    class="pointer-events-auto w-8 h-8 rounded-full bg-zinc-900/85 hover:bg-zinc-900 text-white shadow-md flex items-center justify-center transition transform hover:scale-110 active:scale-95 border border-white/30">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                             </button>
                         </div>
@@ -2023,12 +2091,12 @@
                 if (cropBtn && cropLabel && inlineControls) {
                     if (zoomLabel) zoomLabel.textContent = `${Math.round((el.imgZoom || 1) * 100)}%`;
                     if (isCropping) {
-                        cropBtn.classList.remove('bg-emerald-100', 'dark:bg-emerald-900/50', 'text-emerald-700', 'dark:text-emerald-200');
-                        cropBtn.classList.add('bg-emerald-600', 'text-white');
+                        cropBtn.classList.remove('bg-zinc-100', 'dark:bg-zinc-700', 'text-zinc-800', 'dark:text-zinc-100');
+                        cropBtn.classList.add('bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
                         cropLabel.textContent = 'Selesai';
                     } else {
-                        cropBtn.classList.add('bg-emerald-100', 'dark:bg-emerald-900/50', 'text-emerald-700', 'dark:text-emerald-200');
-                        cropBtn.classList.remove('bg-emerald-600', 'text-white');
+                        cropBtn.classList.add('bg-zinc-100', 'dark:bg-zinc-700', 'text-zinc-800', 'dark:text-zinc-100');
+                        cropBtn.classList.remove('bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
                         cropLabel.textContent = 'Geser Foto';
                     }
                 }
@@ -2036,9 +2104,9 @@
                 const currentShape = el.shape || (el.frame === 'rounded' ? 'circle' : 'rect');
                 document.querySelectorAll('.shape-choice-btn').forEach(btn => {
                     if (btn.dataset.shape === currentShape) {
-                        btn.classList.add('border-violet-600', 'bg-violet-100', 'dark:bg-violet-900/60', 'text-violet-700', 'dark:text-violet-200');
+                        btn.classList.add('border-zinc-900', 'bg-zinc-200/80', 'dark:border-zinc-100', 'dark:bg-zinc-700', 'text-zinc-900', 'dark:text-zinc-100');
                     } else {
-                        btn.classList.remove('border-violet-600', 'bg-violet-100', 'dark:bg-violet-900/60', 'text-violet-700', 'dark:text-violet-200');
+                        btn.classList.remove('border-zinc-900', 'bg-zinc-200/80', 'dark:border-zinc-100', 'dark:bg-zinc-700', 'text-zinc-900', 'dark:text-zinc-100');
                     }
                 });
                 const frameLabels = { none: 'Polos', polaroid: 'Polaroid', film: 'Film', border: 'Border' };
@@ -2303,7 +2371,7 @@
                     const shapeObj = PHOTO_SHAPES.find(s => s.id === (el.shape || 'rect'));
                     label = el.isPlaceholder ? `Slot Foto (${shapeObj ? shapeObj.name : 'Kotak'})` : `Foto • ${shapeObj ? shapeObj.name : 'Kotak'}`;
                 } else if (el.type === 'text') {
-                    previewHtml = `<div class="w-8 h-8 rounded bg-violet-100 dark:bg-violet-900/40 text-violet-600 dark:text-violet-300 flex items-center justify-center font-serif font-bold text-sm shrink-0">T</div>`;
+                    previewHtml = `<div class="w-8 h-8 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center font-serif font-bold text-sm shrink-0">T</div>`;
                     label = escapeHtml(el.text.replace(/\n/g, ' ').slice(0, 18) || 'Teks');
                 } else {
                     previewHtml = `<div class="w-8 h-8 rounded bg-amber-100 dark:bg-amber-900/40 text-amber-600 flex items-center justify-center text-xs shrink-0">★</div>`;
@@ -2311,7 +2379,7 @@
                 }
 
                 return `
-                    <div onclick="selectElement(${el.id})" class="flex items-center justify-between gap-2 p-2 rounded-xl border cursor-pointer transition ${isSelected ? 'border-violet-500 bg-violet-50/70 dark:bg-violet-950/40' : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/40 hover:border-zinc-300 dark:hover:border-zinc-700'} ${el.hidden ? 'opacity-50' : ''}">
+                    <div onclick="selectElement(${el.id})" class="flex items-center justify-between gap-2 p-2 rounded-xl border cursor-pointer transition ${isSelected ? 'border-zinc-900 bg-zinc-100/90 dark:border-zinc-100 dark:bg-zinc-800' : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/40 hover:border-zinc-300 dark:hover:border-zinc-700'} ${el.hidden ? 'opacity-50' : ''}">
                         <div class="flex items-center gap-2 min-w-0">
                             <span class="text-[10px] font-mono text-zinc-400 w-4 text-center">${el.zIndex}</span>
                             ${previewHtml}
@@ -2359,25 +2427,25 @@
         }
 
         // ==========================================
-        // 100 ORGANIZED SCRL TEMPLATES CATALOG & GENERATOR
+        // 150 ORGANIZED SCRL TEMPLATES CATALOG & GENERATOR
         const TEMPLATE_CATEGORIES = [
-            { id: 'all', label: 'Semua (100)' },
-            { id: 'overlap', label: 'Seamless Overlap (10)' },
-            { id: 'bento', label: 'Bento & Grid (10)' },
-            { id: 'torn', label: 'Torn & Tape (10)' },
-            { id: 'dump', label: 'Photo Dump (10)' },
-            { id: 'film', label: 'Film & Polaroid (10)' },
-            { id: 'editorial', label: 'Editorial & Arch (10)' },
-            { id: 'panoramic', label: 'Cut-in-Half Panorama (10)' },
-            { id: 'cascade', label: 'Diagonal Cascade (10)' },
-            { id: 'lookbook', label: 'Lookbook Split (10)' },
-            { id: 'exhibition', label: 'Gallery Exhibition (10)' }
+            { id: 'all', label: 'Semua (150)' },
+            { id: 'overlap', label: 'Seamless Overlap (15)' },
+            { id: 'bento', label: 'Bento & Grid (15)' },
+            { id: 'torn', label: 'Torn & Tape (15)' },
+            { id: 'dump', label: 'Photo Dump (15)' },
+            { id: 'film', label: 'Film & Polaroid (15)' },
+            { id: 'editorial', label: 'Editorial & Arch (15)' },
+            { id: 'panoramic', label: 'Cut-in-Half Panorama (15)' },
+            { id: 'cascade', label: 'Diagonal Cascade (15)' },
+            { id: 'lookbook', label: 'Lookbook Split (15)' },
+            { id: 'exhibition', label: 'Gallery Exhibition (15)' }
         ];
 
         let activeTemplateCategory = 'all';
         let TEMPLATE_CATALOG = [];
 
-        function build50Templates() {
+        function build150Templates() {
             const list = [];
 
             // 1. BENTO & GRID (10 Templates)
@@ -2562,11 +2630,80 @@
                 list.push({ ...c, category: 'exhibition', slots, previewBg: c.bg, gen: () => generateExhibitionLayout(c) });
             });
 
+            // Full refresh pass: all 150 presets get a new visual identity, not just a recolor.
+            // The direction is inspired by public SCRL principles (editorial, panoramic, freeform, layers),
+            // while the layouts, names, and procedural compositions remain original to this studio.
+            const refreshPatterns = ['aurora','sunset','mesh','ocean','candy','sage','night','paperwash','mono','lime'];
+            const refreshStyles = ['Editorial Cut','Panoramic Flow','Tape & Type','Chrome Grid','Soft Focus','Archive Note','Magazine Fold','Color Block','Scrap Layer','Film Contact'];
+            const refreshTitles = { bento:'Bento', torn:'Torn Paper', dump:'Photo Dump', film:'Film Archive', editorial:'Editorial', overlap:'Layered Overlap', panoramic:'Panorama', cascade:'Diagonal Flow', lookbook:'Lookbook', exhibition:'Gallery' };
+            const refreshGenerators = {
+                bento: generateBentoLayout, torn: generateTornLayout, dump: generateDumpLayout, film: generateFilmLayout,
+                editorial: generateEditorialLayout, overlap: generateOverlapLayout, panoramic: generatePanoramicLayout,
+                cascade: generateCascadeLayout, lookbook: generateLookbookLayout, exhibition: generateExhibitionLayout
+            };
+            list.forEach((item, index) => {
+                const pattern = refreshPatterns[index % refreshPatterns.length];
+                const preset = BACKGROUND_PRESETS[pattern];
+                const style = refreshStyles[index % refreshStyles.length];
+                item.title = `${String(index + 1).padStart(2, '0')} ${style} ${refreshTitles[item.category]}`;
+                item.sub = `Komposisi ${style.toLowerCase()} dengan alur swipe yang lebih dinamis`;
+                item.seed = 401 + index;
+                item.pattern = pattern;
+                item.bg = preset.base;
+                item.previewBg = preset.base;
+                item.isRefreshed = true;
+                const generator = refreshGenerators[item.category];
+                if (generator) item.gen = () => generator(item);
+            });
+
+            // 50 additional templates: same proven generators, but with richer art-directed backgrounds.
+            const extraFamilies = [
+                ['bento', generateBentoLayout, ['bento_11','bento_12','bento_13','bento_14','bento_15']],
+                ['torn', generateTornLayout, ['torn_11','torn_12','torn_13','torn_14','torn_15']],
+                ['dump', generateDumpLayout, ['dump_11','dump_12','dump_13','dump_14','dump_15']],
+                ['film', generateFilmLayout, ['film_11','film_12','film_13','film_14','film_15']],
+                ['editorial', generateEditorialLayout, ['edit_11','edit_12','edit_13','edit_14','edit_15']],
+                ['overlap', generateOverlapLayout, ['ov_11','ov_12','ov_13','ov_14','ov_15']],
+                ['panoramic', generatePanoramicLayout, ['pano_11','pano_12','pano_13','pano_14','pano_15']],
+                ['cascade', generateCascadeLayout, ['cas_11','cas_12','cas_13','cas_14','cas_15']],
+                ['lookbook', generateLookbookLayout, ['lb_11','lb_12','lb_13','lb_14','lb_15']],
+                ['exhibition', generateExhibitionLayout, ['exh_11','exh_12','exh_13','exh_14','exh_15']]
+            ];
+            const patternCycle = ['aurora','sunset','mesh','ocean','candy','sage','night','paperwash','mono','lime'];
+            const familyTitles = { bento:'Bento', torn:'Torn Paper', dump:'Photo Dump', film:'Film Archive', editorial:'Editorial', overlap:'Layered Overlap', panoramic:'Panorama', cascade:'Diagonal Flow', lookbook:'Lookbook', exhibition:'Gallery' };
+            extraFamilies.forEach(([category, generator, ids], familyIndex) => {
+                ids.forEach((id, i) => {
+                    const pattern = patternCycle[(familyIndex * 2 + i) % patternCycle.length];
+                    const preset = BACKGROUND_PRESETS[pattern];
+                    const slides = 3 + ((familyIndex + i) % 5);
+                    const cfg = { id, title: `${familyTitles[category]} ${String(i + 11).padStart(2,'0')} · ${pattern[0].toUpperCase()+pattern.slice(1)}`, slides, bg: preset.base, pattern, sub: `Eksplorasi baru dengan background ${pattern} yang lebih ekspresif`, seed: 101 + familyIndex * 5 + i, cards: 2 + (i % 3), taped: 2 + (i % 3), slots: slides * 2 + 2 };
+                    cfg.previewBg = cfg.bg;
+                    cfg.gen = () => generator(cfg);
+                    list.push({ ...cfg, category, previewBg: cfg.bg });
+                });
+            });
+
+            // Final catalog pass: refresh the complete 150-item set, including the 50 new additions above.
+            list.forEach((item, index) => {
+                const pattern = refreshPatterns[index % refreshPatterns.length];
+                const preset = BACKGROUND_PRESETS[pattern];
+                const style = refreshStyles[index % refreshStyles.length];
+                item.title = `${String(index + 1).padStart(2, '0')} ${style} ${refreshTitles[item.category]}`;
+                item.sub = `Komposisi ${style.toLowerCase()} dengan alur swipe yang lebih dinamis`;
+                item.seed = 401 + index;
+                item.pattern = pattern;
+                item.bg = preset.base;
+                item.previewBg = preset.base;
+                item.isRefreshed = true;
+                const generator = refreshGenerators[item.category];
+                if (generator) item.gen = () => generator(item);
+            });
+
             return list;
         }
 
         function initTemplatesCatalog() {
-            TEMPLATE_CATALOG = build50Templates();
+            TEMPLATE_CATALOG = build150Templates();
             renderCategoryPills();
             renderTemplateGallery();
         }
@@ -2578,7 +2715,7 @@
                 const active = activeTemplateCategory === cat.id;
                 return `
                     <button type="button" onclick="selectTemplateCategory('${cat.id}')"
-                            class="shrink-0 px-2.5 py-1 rounded-full text-[11px] font-medium transition ${active ? 'bg-violet-600 text-white shadow-sm' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700'}">
+                            class="shrink-0 px-2.5 py-1 rounded-full text-[11px] font-medium transition ${active ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-sm' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700'}">
                         ${cat.label}
                     </button>
                 `;
@@ -2598,7 +2735,7 @@
         function renderTemplateThumbnail(tpl) {
             if (tpl.category === 'bento') {
                 return `
-                    <div class="h-16 rounded-xl p-1.5 grid grid-cols-6 grid-rows-2 gap-1 overflow-hidden relative mb-2 border border-white/10" style="background:${tpl.previewBg}">
+                    <div class="h-16 rounded-xl p-1.5 grid grid-cols-6 grid-rows-2 gap-1 overflow-hidden relative mb-2 border border-white/10" style="background-color:${tpl.previewBg};background-image:${getBackgroundCss(tpl.pattern)}">
                         <div class="col-span-2 row-span-1 bg-zinc-300/90 rounded-[2px]"></div>
                         <div class="col-span-2 row-span-2 bg-zinc-400/90 rounded-[2px]"></div>
                         <div class="col-span-2 row-span-1 bg-zinc-300/90 rounded-[2px]"></div>
@@ -2609,7 +2746,7 @@
                 `;
             } else if (tpl.category === 'torn') {
                 return `
-                    <div class="h-16 rounded-xl flex overflow-hidden relative mb-2 border border-black/10" style="background:${tpl.previewBg}">
+                    <div class="h-16 rounded-xl flex overflow-hidden relative mb-2 border border-black/10" style="background-color:${tpl.previewBg};background-image:${getBackgroundCss(tpl.pattern)}">
                         <div class="w-1/3 h-full bg-zinc-400/50 border-r border-dashed border-zinc-400"></div>
                         <div class="w-1/3 h-full bg-zinc-300/40 border-r border-dashed border-zinc-400"></div>
                         <div class="w-1/3 h-full bg-zinc-400/50"></div>
@@ -2621,7 +2758,7 @@
                 `;
             } else if (tpl.category === 'dump') {
                 return `
-                    <div class="h-16 rounded-xl p-1.5 grid grid-cols-5 grid-rows-2 gap-1 overflow-hidden relative mb-2 border border-black/10" style="background:${tpl.previewBg}">
+                    <div class="h-16 rounded-xl p-1.5 grid grid-cols-5 grid-rows-2 gap-1 overflow-hidden relative mb-2 border border-black/10" style="background-color:${tpl.previewBg};background-image:${getBackgroundCss(tpl.pattern)}">
                         <div class="col-span-1 row-span-2 bg-zinc-300/90 rounded-[2px]"></div>
                         <div class="col-span-2 row-span-1 bg-zinc-400/90 rounded-[2px]"></div>
                         <div class="col-span-1 row-span-2 bg-zinc-300/90 rounded-[2px]"></div>
@@ -2633,7 +2770,7 @@
                 `;
             } else if (tpl.category === 'film') {
                 return `
-                    <div class="h-16 rounded-xl p-1.5 flex items-center justify-around gap-1.5 overflow-hidden relative mb-2 border border-white/10" style="background:${tpl.previewBg}">
+                    <div class="h-16 rounded-xl p-1.5 flex items-center justify-around gap-1.5 overflow-hidden relative mb-2 border border-white/10" style="background-color:${tpl.previewBg};background-image:${getBackgroundCss(tpl.pattern)}">
                         <div class="w-11 h-12 bg-zinc-800 border-y-2 border-dashed border-zinc-500 flex items-center justify-center"><div class="w-8 h-7 bg-zinc-400"></div></div>
                         <div class="w-10 h-11 bg-white p-0.5 pb-2 shadow transform rotate-3"><div class="w-full h-full bg-zinc-400"></div></div>
                         <div class="w-11 h-12 bg-zinc-800 border-y-2 border-dashed border-zinc-500 flex items-center justify-center"><div class="w-8 h-7 bg-zinc-400"></div></div>
@@ -2641,7 +2778,7 @@
                 `;
             } else if (tpl.category === 'exhibition') {
                 return `
-                    <div class="h-16 rounded-xl p-1.5 grid grid-cols-4 grid-rows-2 gap-1 overflow-hidden relative mb-2 border border-black/10" style="background:${tpl.previewBg}">
+                    <div class="h-16 rounded-xl p-1.5 grid grid-cols-4 grid-rows-2 gap-1 overflow-hidden relative mb-2 border border-black/10" style="background-color:${tpl.previewBg};background-image:${getBackgroundCss(tpl.pattern)}">
                         <div class="bg-stone-400/90 rounded-t-full border border-white row-span-2"></div>
                         <div class="bg-stone-300/90 border border-white"></div>
                         <div class="bg-stone-400/90 border border-white rounded-full"></div>
@@ -2652,7 +2789,7 @@
                 `;
             } else if (tpl.category === 'overlap' || tpl.category === 'cascade') {
                 return `
-                    <div class="h-16 rounded-xl p-1.5 flex items-center justify-center overflow-hidden relative mb-2 border border-black/10" style="background:${tpl.previewBg}">
+                    <div class="h-16 rounded-xl p-1.5 flex items-center justify-center overflow-hidden relative mb-2 border border-black/10" style="background-color:${tpl.previewBg};background-image:${getBackgroundCss(tpl.pattern)}">
                         <div class="w-12 h-11 bg-zinc-300/90 border border-white shadow-sm -mr-3 -mt-2"></div>
                         <div class="w-12 h-12 bg-zinc-400/95 border border-white shadow-md z-10 mt-1"></div>
                         <div class="w-12 h-11 bg-zinc-300/90 border border-white shadow-sm -ml-3 -mt-2"></div>
@@ -2660,15 +2797,15 @@
                 `;
             } else if (tpl.category === 'panoramic' || tpl.category === 'lookbook') {
                 return `
-                    <div class="h-16 rounded-xl p-1.5 grid grid-cols-4 gap-1 overflow-hidden relative mb-2 border border-black/10" style="background:${tpl.previewBg}">
+                    <div class="h-16 rounded-xl p-1.5 grid grid-cols-4 gap-1 overflow-hidden relative mb-2 border border-black/10" style="background-color:${tpl.previewBg};background-image:${getBackgroundCss(tpl.pattern)}">
                         <div class="col-span-1 bg-zinc-300/90"></div>
-                        <div class="col-span-2 bg-zinc-400/95 border-x border-dashed border-violet-500/60"></div>
+                        <div class="col-span-2 bg-zinc-400/95 border-x border-dashed border-zinc-400/60"></div>
                         <div class="col-span-1 bg-zinc-300/90"></div>
                     </div>
                 `;
             } else {
                 return `
-                    <div class="h-16 rounded-xl p-1.5 flex items-center justify-around gap-1.5 overflow-hidden relative mb-2 border border-black/10" style="background:${tpl.previewBg}">
+                    <div class="h-16 rounded-xl p-1.5 flex items-center justify-around gap-1.5 overflow-hidden relative mb-2 border border-black/10" style="background-color:${tpl.previewBg};background-image:${getBackgroundCss(tpl.pattern)}">
                         <div class="w-8 h-12 bg-stone-400/90 rounded-t-full border border-white"></div>
                         <div class="w-10 h-10 bg-stone-300/90 rounded-full border border-white"></div>
                         <div class="w-7 h-12 bg-stone-400/90 rounded-full border border-white"></div>
@@ -2699,18 +2836,18 @@
             }
 
             listEl.innerHTML = filtered.map(tpl => `
-                <button onclick="applyTemplate('${tpl.id}')" class="group text-left rounded-2xl border border-zinc-200 dark:border-zinc-800 p-2.5 hover:border-violet-500 transition bg-zinc-50 dark:bg-zinc-800/40">
+                <button onclick="applyTemplate('${tpl.id}')" class="group text-left rounded-2xl border border-zinc-200 dark:border-zinc-800 p-2.5 hover:border-zinc-400 dark:hover:border-zinc-600 transition bg-zinc-50 dark:bg-zinc-800/40">
                     ${renderTemplateThumbnail(tpl)}
                     <div class="flex items-center justify-between gap-1">
-                        <span class="font-semibold text-xs group-hover:text-violet-500 transition truncate">${tpl.title}</span>
-                        <span class="text-[9px] font-mono bg-violet-600/90 text-white px-1.5 py-0.5 rounded shrink-0">${tpl.slides}S • ${tpl.slots}F</span>
+                        <span class="font-semibold text-xs group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition truncate">${tpl.title}</span>
+                        <span class="text-[9px] font-mono bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200 px-1.5 py-0.5 rounded shrink-0">${tpl.slides}S • ${tpl.slots}F</span>
                     </div>
                     <div class="text-[10px] text-zinc-500 truncate mt-0.5">${tpl.sub}</div>
                 </button>
             `).join('');
         }
 
-        // Procedural Parametric Layout Builders for All 100 Templates
+        // Procedural Parametric Layout Builders for All 150 Templates
         function generateBentoLayout(cfg) {
             const els = [];
             let z = 1;
@@ -3041,9 +3178,17 @@
             state.editingTextId = null;
             state.slideCount = 3;
 
-            if (name === 'scrl_bento') {
+            const refreshedTemplate = TEMPLATE_CATALOG.find(t => t.id === name && t.isRefreshed);
+            if (refreshedTemplate) {
+                state.slideCount = refreshedTemplate.slides;
+                state.bgColor = refreshedTemplate.bg;
+                state.bgPattern = refreshedTemplate.pattern || 'none';
+                state.texture = refreshedTemplate.category === 'editorial' ? 'paper' : 'none';
+                state.elements = refreshedTemplate.gen();
+            } else if (name === 'scrl_bento') {
                 state.slideCount = 3;
                 state.bgColor = '#09090B';
+                state.bgPattern = 'none';
                 state.texture = 'none';
                 state.elements = [
                     { type: 'image', src: '', isPlaceholder: true, placeholderBg: '#E4E4E7', x: 18, y: 18, width: 284, height: 158, rotation: 0, frame: 'none', shape: 'rect', zIndex: 1 },
@@ -3063,6 +3208,7 @@
             } else if (name === 'scrl_torn') {
                 state.slideCount = 7;
                 state.bgColor = '#E6E6E6';
+                state.bgPattern = 'none';
                 state.texture = 'none';
                 state.elements = [
                     { type: 'image', src: '', isPlaceholder: true, placeholderBg: '#BDBDBD', x: 0, y: 0, width: 470, height: 400, rotation: 0, frame: 'none', shape: 'torn-right', zIndex: 1 },
@@ -3080,6 +3226,7 @@
                 ];
             } else if (name === 'editorial') {
                 state.bgColor = '#F5F1EB';
+                state.bgPattern = 'paperwash';
                 state.texture = 'paper';
                 state.elements = [
                     { type: 'text', text: 'ISSUE 04 • ARCHIVE', fontFamily: 'font-mono', fontSize: 11, bold: false, color: '#78716C', align: 'left', x: 30, y: 30, width: 180, height: 24, rotation: 0, zIndex: 1 },
@@ -3093,6 +3240,7 @@
                 ];
             } else if (name === 'film') {
                 state.bgColor = '#141416';
+                state.bgPattern = 'none';
                 state.texture = 'none';
                 state.elements = [
                     { type: 'text', text: '35MM ANALOG\nCONTACT SHEET', fontFamily: 'font-mono', fontSize: 22, bold: true, color: '#FBBF24', align: 'left', x: 28, y: 38, width: 250, height: 65, rotation: 0, zIndex: 3 },
@@ -3104,6 +3252,7 @@
                 ];
             } else if (name === 'scrapbook') {
                 state.bgColor = '#E8DFD5';
+                state.bgPattern = 'paperwash';
                 state.texture = 'grid';
                 state.elements = [
                     { type: 'image', src: STOCK_PHOTOS[3].url, fallbackColor: STOCK_PHOTOS[3].fallbackColor, x: 40, y: 55, width: 190, height: 230, rotation: -4, frame: 'polaroid', shape: 'rect', zIndex: 2 },
@@ -3115,6 +3264,7 @@
                 ];
             } else if (name === 'bold') {
                 state.bgColor = '#FF4D2D';
+                state.bgPattern = 'sunset';
                 state.texture = 'dots';
                 state.elements = [
                     { type: 'text', text: 'DESIGN\nTHAT\nMOVES.', fontFamily: 'font-display', fontSize: 46, bold: true, color: '#FFFFFF', align: 'left', x: 28, y: 45, width: 260, height: 170, rotation: 0, zIndex: 3 },
@@ -3128,12 +3278,13 @@
                 if (tpl && typeof tpl.gen === 'function') {
                     state.slideCount = tpl.slides;
                     state.bgColor = tpl.bg;
+                    state.bgPattern = tpl.pattern || 'none';
                     state.texture = tpl.category === 'editorial' ? 'paper' : 'none';
                     state.elements = tpl.gen();
                 }
             }
 
-            // Guarantee strictly unique IDs & clean defaults across all 100 templates
+            // Guarantee strictly unique IDs & clean defaults across all 150 templates
             state.elements.forEach((el, idx) => {
                 el.id = idx + 1;
                 el.hidden = false;
@@ -3234,9 +3385,8 @@
                     sliceCanvas.height = singleSlideH;
                     const ctx = sliceCanvas.getContext('2d');
 
-                    // 1. Fill Background Color
-                    ctx.fillStyle = state.bgColor;
-                    ctx.fillRect(0, 0, singleSlideW, singleSlideH);
+                    // 1. Fill Background Color + art-directed pattern
+                    drawExportBackground(ctx, state.bgPattern || 'none', state.bgColor, singleSlideW, singleSlideH);
 
                     // 2. Draw Subtle Texture matching CSS preview
                     if (state.texture === 'grid') {
@@ -3306,7 +3456,7 @@
                             <span>1080×1350</span>
                         </div>
                         <img src="${dataUrl}" class="w-full aspect-[4/5] object-cover rounded-xl border border-zinc-200 dark:border-zinc-700">
-                        <a href="${dataUrl}" download="Stitch-Studio-Slide-${slideLabel}.jpg" class="w-full py-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 hover:bg-violet-600 hover:text-white text-xs font-semibold text-center transition flex items-center justify-center gap-1.5">
+                        <a href="${dataUrl}" download="Stitch-Studio-Slide-${slideLabel}.jpg" class="w-full py-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 text-xs font-semibold text-center transition flex items-center justify-center gap-1.5">
                             <i data-lucide="download" class="w-3.5 h-3.5"></i> Download Slide ${slideLabel}
                         </a>
                     `;
@@ -3743,11 +3893,11 @@
 
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 if (btn.dataset.tab === tabName) {
-                    btn.classList.add('text-violet-600', 'dark:text-violet-400', 'bg-violet-50', 'dark:bg-violet-950/50');
-                    btn.classList.remove('text-zinc-500', 'dark:text-zinc-400');
+                    btn.classList.add('text-zinc-900', 'dark:text-zinc-100', 'bg-zinc-100', 'dark:bg-zinc-800', 'font-semibold', 'shadow-sm');
+                    btn.classList.remove('text-zinc-500', 'dark:text-zinc-400', 'font-medium');
                 } else {
-                    btn.classList.remove('text-violet-600', 'dark:text-violet-400', 'bg-violet-50', 'dark:bg-violet-950/50');
-                    btn.classList.add('text-zinc-500', 'dark:text-zinc-400');
+                    btn.classList.remove('text-zinc-900', 'dark:text-zinc-100', 'bg-zinc-100', 'dark:bg-zinc-800', 'font-semibold', 'shadow-sm');
+                    btn.classList.add('text-zinc-500', 'dark:text-zinc-400', 'font-medium');
                 }
             });
         }
@@ -3791,6 +3941,22 @@
             renderElements();
             saveHistory();
             showToast('Kanvas dibersihkan');
+        }
+
+        function drawExportBackground(ctx, pattern, baseColor, w, h) {
+            ctx.fillStyle = baseColor || '#F5F1EB';
+            ctx.fillRect(0, 0, w, h);
+            const scale = Math.max(w, h) / 400;
+            const add = (g) => { ctx.fillStyle = g; ctx.fillRect(0, 0, w, h); };
+            if (pattern === 'aurora') { const g=ctx.createLinearGradient(0,0,w,h); g.addColorStop(0,'#101827'); g.addColorStop(.5,'#1d274c'); g.addColorStop(1,'#142b36'); add(g); const r=ctx.createRadialGradient(w*.18,h*.18,0,w*.18,h*.18,w*.38); r.addColorStop(0,'rgba(73,214,194,.9)'); r.addColorStop(1,'rgba(73,214,194,0)'); add(r); }
+            else if (pattern === 'sunset') { const g=ctx.createLinearGradient(0,h,w,0); g.addColorStop(0,'#3d1f49'); g.addColorStop(.5,'#a04b58'); g.addColorStop(1,'#f09a63'); add(g); }
+            else if (pattern === 'ocean') { const g=ctx.createLinearGradient(0,0,w,h); g.addColorStop(0,'#082f49'); g.addColorStop(.5,'#0e7490'); g.addColorStop(1,'#164e63'); add(g); }
+            else if (pattern === 'candy') { const g=ctx.createLinearGradient(0,0,w,h); g.addColorStop(0,'#fbcfe8'); g.addColorStop(.5,'#f9a8d4'); g.addColorStop(1,'#c4b5fd'); add(g); }
+            else if (pattern === 'sage') { const g=ctx.createLinearGradient(0,0,w,h); g.addColorStop(0,'#273b36'); g.addColorStop(.55,'#718c78'); g.addColorStop(1,'#c6d7bd'); add(g); }
+            else if (pattern === 'night') { const g=ctx.createRadialGradient(w*.28,h*.2,0,w*.28,h*.2,w*.45); g.addColorStop(0,'#4658aa'); g.addColorStop(1,'#111827'); add(g); }
+            else if (pattern === 'mesh' || pattern === 'paperwash') { const g=ctx.createRadialGradient(w*.1,h*.15,0,w*.1,h*.15,w*.45); g.addColorStop(0,'rgba(255,255,255,.8)'); g.addColorStop(1,'rgba(255,255,255,0)'); add(g); }
+            else if (pattern === 'mono') { const g=ctx.createLinearGradient(0,0,w,h); g.addColorStop(0,'#27272a'); g.addColorStop(1,'#a1a1aa'); add(g); }
+            else if (pattern === 'lime') { const g=ctx.createLinearGradient(0,0,w,h); g.addColorStop(0,'#365314'); g.addColorStop(.55,'#a3e635'); g.addColorStop(1,'#facc15'); add(g); }
         }
 
         function isColorDark(hex) {
